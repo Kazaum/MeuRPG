@@ -6,6 +6,7 @@ public class Personagem {
     private int gasto;
     private int defesa;
     private int regeneracao;
+    private int dinheiro;
     private Ataque ataque1;
     private Ataque ataque2;
     private Ataque ataqueEspecial;
@@ -48,6 +49,14 @@ public class Personagem {
 
     public void setRegeneracao(int regeneracao) {
         this.regeneracao = regeneracao;
+    }
+    
+    public int getDinheiro() {
+        return dinheiro;
+    }
+
+    public void setDinheiro(int dinheiro) {
+        this.dinheiro = dinheiro;
     }
 
     public Ataque getAtaque1() {

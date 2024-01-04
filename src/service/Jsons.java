@@ -33,6 +33,7 @@ public class Jsons {
             jsonPersonagem.put("mana/estamina", personagem.getGasto());
             jsonPersonagem.put("defesa", personagem.getDefesa());
             jsonPersonagem.put("regeneracao", personagem.getRegeneracao());
+            jsonPersonagem.put("dinheiro", personagem.getDinheiro());
             jsonPersonagem.put("ataque1", jsonAtaque1);
             jsonPersonagem.put("ataque2", jsonAtaque2);
             jsonPersonagem.put("ataque_especial", jsonAtaqueEspecial);    

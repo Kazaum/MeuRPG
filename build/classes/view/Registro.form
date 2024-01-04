@@ -677,7 +677,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblRegenera&#xe7;&#xe3;o">
+                <Component class="javax.swing.JLabel" name="lblRegeneracao">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Book Antiqua" size="14" style="1"/>

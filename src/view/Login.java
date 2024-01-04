@@ -213,7 +213,15 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarMouseExited
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        Registro registro = new Registro();
+        String usuarioLogin = txtUsuario.getText();
+        String senhaLogin = null;
+        if(txtSenha.isVisible()){
+            senhaLogin = txtSenha.getText();
+        }else{
+            senhaLogin = pwdSenha.getText();
+        }
+        
+        Registro registro = new Registro(usuarioLogin, senhaLogin);
         registro.setVisible(true);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 

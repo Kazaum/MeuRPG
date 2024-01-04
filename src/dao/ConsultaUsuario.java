@@ -37,27 +37,23 @@ public class ConsultaUsuario {
         
         int gasto = atributosJson.getInt("mana/estamina");
         int regeneracao = atributosJson.getInt("regeneracao");
+        int dinheiro = atributosJson.getInt("dinheiro");
         int idUsuario = atributosJson.getInt("idUsuario");
         int vida = atributosJson.getInt("vida");
         int defesa = atributosJson.getInt("defesa");
-        JSONObject ataq1 = atributosJson.getJSONObject("ataque1");
-        JSONObject ataq2 = atributosJson.getJSONObject("ataque2");
-        JSONObject ataqEspecial = atributosJson.getJSONObject("ataque_especial");
         
         int id = usuarioJson.getInt("id");
         String usuario = usuarioJson.getString("usuario");
         String senha = usuarioJson.getString("senha");
         int nivel = usuarioJson.getInt("nivel");
-        JSONObject jsonClasse = usuarioJson.getJSONObject("classe");
         
         String classe = classeJson.getString("classe");
-        JSONObject jsonPersonagem = classeJson.getJSONObject("atributos");
         
         Ataque atq1 = objetos.ataque1(dano1, gasto1);
         Ataque atq2 = objetos.ataque1(dano2, gasto2);
         Ataque atqEspecial = objetos.ataque1(dano3, gasto3);
         
-        Personagem personagem = objetos.personagem(vida, gasto, defesa, regeneracao, atq1, atq2, atqEspecial, idUsuario);
+        Personagem personagem = objetos.personagem(vida, gasto, defesa, regeneracao, dinheiro, atq1, atq2, atqEspecial, idUsuario);
         
         Classe newClasse = objetos.classe(classe, personagem);
         

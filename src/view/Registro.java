@@ -18,8 +18,9 @@ import service.ReceberId;
 import service.ValidaUsuario;
 
 public class Registro extends javax.swing.JFrame {
-
-    public Registro() {
+    private String usuarioLogin;
+    private String senhaLogin;
+    public Registro(String usuarioLogin, String senhaLogin) {
         initComponents();
         Color transparente = new Color(0,0,0,0);
         txtSenha.setVisible(false);
@@ -30,6 +31,8 @@ public class Registro extends javax.swing.JFrame {
         rdoPaladino.setBackground(transparente);
         rdoEngenheiro.setBackground(transparente);
         imgAlerta.setVisible(false);
+        txtUsuario.setText(usuarioLogin);
+        pwdSenha.setText(senhaLogin);
     }
 
     @SuppressWarnings("unchecked")
@@ -70,7 +73,7 @@ public class Registro extends javax.swing.JFrame {
         lblVida = new javax.swing.JLabel();
         lblGasto = new javax.swing.JLabel();
         lblDefesa = new javax.swing.JLabel();
-        lblRegeneração = new javax.swing.JLabel();
+        lblRegeneracao = new javax.swing.JLabel();
         lblValorVida = new javax.swing.JLabel();
         lblValorGasto = new javax.swing.JLabel();
         lblValorDefesa = new javax.swing.JLabel();
@@ -391,11 +394,11 @@ public class Registro extends javax.swing.JFrame {
         jPanel1.add(lblDefesa);
         lblDefesa.setBounds(10, 70, 90, 30);
 
-        lblRegeneração.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
-        lblRegeneração.setForeground(new java.awt.Color(0, 0, 0));
-        lblRegeneração.setText("REGENERAÇÃO:");
-        jPanel1.add(lblRegeneração);
-        lblRegeneração.setBounds(10, 100, 130, 30);
+        lblRegeneracao.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
+        lblRegeneracao.setForeground(new java.awt.Color(0, 0, 0));
+        lblRegeneracao.setText("REGENERAÇÃO:");
+        jPanel1.add(lblRegeneracao);
+        lblRegeneracao.setBounds(10, 100, 130, 30);
 
         lblValorVida.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
         lblValorVida.setForeground(new java.awt.Color(0, 0, 0));
@@ -498,7 +501,8 @@ public class Registro extends javax.swing.JFrame {
         int vida = Integer.parseInt(lblValorVida.getText());      
         int gasto = Integer.parseInt(lblValorGasto.getText());
         int defesa = Integer.parseInt(lblValorDefesa.getText());   
-        int regeneracao = Integer.parseInt(lblValorRegeneracao.getText());   
+        int regeneracao = Integer.parseInt(lblValorRegeneracao.getText());
+        int dinheiro = 1000;
         int dano1 = Integer.parseInt(lblDano1.getText()); 
         int dano2 = Integer.parseInt(lblDano2.getText()); 
         int dano3 = Integer.parseInt(lblDanoEspecial.getText()); 
@@ -511,7 +515,8 @@ public class Registro extends javax.swing.JFrame {
         Ataque atq1 = objetos.ataque1(dano1, gasto1);
         Ataque atq2 = objetos.ataque2(dano2, gasto2);
         Ataque atqEspecial = objetos.ataqueEspecial(dano3, gasto3);
-        Personagem personagem = objetos.personagem(vida, gasto, defesa, regeneracao, atq1, atq2, atqEspecial, idUsuario);
+        Personagem personagem = objetos.personagem(vida, gasto, defesa, regeneracao, dinheiro, atq1, atq2, atqEspecial, idUsuario);
+        System.out.println(personagem.getDinheiro());
         Classe newClasse = objetos.classe(classe, personagem);
         Usuario user = objetos.usuario(id, usuario, senha, nivel, newClasse);
         
@@ -700,11 +705,11 @@ public class Registro extends javax.swing.JFrame {
         antiBug();
     }//GEN-LAST:event_rdoEngenheiroMouseExited
 
-    public static void main(String args[]) {
+    public static void main(String args[], String usuarioLogin, String senhaLogin) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registro().setVisible(true);
+                new Registro(usuarioLogin, senhaLogin).setVisible(true);
             }
         });
     }
@@ -733,7 +738,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel lblGasto1;
     private javax.swing.JLabel lblGasto2;
     private javax.swing.JLabel lblGastoEspecial;
-    private javax.swing.JLabel lblRegeneração;
+    private javax.swing.JLabel lblRegeneracao;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblUsuario;

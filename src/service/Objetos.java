@@ -20,16 +20,18 @@ public class Objetos {
     public Classe classe(String classe, Personagem personagem){
         Classe Classe = new Classe();
         Classe.setClasse(classe);
+        Classe.setPersonagem(personagem);
         
         return Classe;
     }
     
-    public Personagem personagem(int vida, int gasto, int defesa, int regeneracao, Ataque atq1, Ataque atq2, Ataque atqEspecial, int idUsuario){
+    public Personagem personagem(int vida, int gasto, int defesa, int regeneracao, int dinheiro, Ataque atq1, Ataque atq2, Ataque atqEspecial, int idUsuario){
         Personagem personagem = new Personagem();
         personagem.setVida(vida);
         personagem.setGasto(gasto);
         personagem.setDefesa(defesa);
         personagem.setRegeneracao(regeneracao);
+        personagem.setDinheiro(dinheiro);
         personagem.setAtaque1(atq1);
         personagem.setAtaque2(atq2);
         personagem.setAtaqueEspecial(atqEspecial);
