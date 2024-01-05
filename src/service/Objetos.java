@@ -1,5 +1,6 @@
 package service;
 
+import java.util.Base64;
 import model.Ataque;
 import model.Classe;
 import model.Personagem;

@@ -103,6 +103,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1400, 800));
+        setResizable(false);
         setSize(new java.awt.Dimension(1400, 800));
         getContentPane().setLayout(null);
 
@@ -246,6 +247,7 @@ public class TelaInicial extends javax.swing.JFrame {
         btnMenu.setBackground(new java.awt.Color(153, 153, 153));
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons/iconMenuLateral.png"))); // NOI18N
         btnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);

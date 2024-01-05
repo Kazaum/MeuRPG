@@ -3,6 +3,7 @@ package dao;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 import model.Ataque;
 import model.Classe;
@@ -43,11 +44,14 @@ public class ConsultaUsuario {
         int defesa = atributosJson.getInt("defesa");
         
         int id = usuarioJson.getInt("id");
-        String usuario = usuarioJson.getString("usuario");
-        String senha = usuarioJson.getString("senha");
+        byte[] usuarioDecodificado = Base64.getDecoder().decode(usuarioJson.getString("usuario"));
+        byte[] senhaDecodificado = Base64.getDecoder().decode(usuarioJson.getString("senha"));
+        String usuario = new String(usuarioDecodificado);
+        String senha = new String(senhaDecodificado);
         int nivel = usuarioJson.getInt("nivel");
         
-        String classe = classeJson.getString("classe");
+        byte[] classeDecodificado = Base64.getDecoder().decode(classeJson.getString("classe"));
+        String classe = new String(classeDecodificado);
         
         Ataque atq1 = objetos.ataque1(dano1, gasto1);
         Ataque atq2 = objetos.ataque1(dano2, gasto2);

@@ -4,6 +4,7 @@ import dao.ConsultaUsuario;
 import java.awt.Color;
 import static java.awt.Color.white;
 import java.io.IOException;
+import java.util.Base64;
 import javax.swing.JOptionPane;
 import model.Usuario;
 import org.json.JSONException;
@@ -246,12 +247,12 @@ public class Login extends javax.swing.JFrame {
             boolean validar = false;
             boolean primeiroAcesso = true;
                 for(int i = 0; i <= usuarios.length-1; i++){
-                    if(usuarios[i].equalsIgnoreCase(txtUsuario.getText())){
+                    if(usuarios[i].equalsIgnoreCase(Base64.getEncoder().encodeToString(txtUsuario.getText().getBytes()))){
                         System.out.println("Usuario " + usuarios[i] + " encontrado");
-                        if(senhas[i].equals(txtSenha.getText()) || senhas[i].equals(pwdSenha.getText())){
-                            Objetos objetos = new Objetos();
-                            ConsultaUsuario consult = new ConsultaUsuario();
-                            Usuario user = consult.consultaDados(i);
+                        ConsultaUsuario consult = new ConsultaUsuario();
+                        Usuario user = consult.consultaDados(i);
+                        System.out.println("SENHA DIGITADA: " + txtSenha.getText() + " SENHA ESCONDIDA: " + pwdSenha.getText() + " SENHA BD: " + user.getSenha());
+                        if(txtSenha.getText().equals(user.getSenha()) || pwdSenha.getText().equals(user.getSenha())){
                             TelaInicial inicio = new TelaInicial(user, primeiroAcesso);
                             inicio.setVisible(true);
                             validar = true;

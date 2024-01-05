@@ -4,6 +4,7 @@ import dao.AdicionaUsuario;
 import java.awt.Color;
 import static java.awt.Color.white;
 import java.io.IOException;
+import java.util.Base64;
 import model.Ataque;
 import model.Classe;
 import model.Usuario;
@@ -18,8 +19,6 @@ import service.ReceberId;
 import service.ValidaUsuario;
 
 public class Registro extends javax.swing.JFrame {
-    private String usuarioLogin;
-    private String senhaLogin;
     public Registro(String usuarioLogin, String senhaLogin) {
         initComponents();
         Color transparente = new Color(0,0,0,0);
@@ -79,6 +78,7 @@ public class Registro extends javax.swing.JFrame {
         lblValorDefesa = new javax.swing.JLabel();
         lblValorRegeneracao = new javax.swing.JLabel();
         imgAlerta = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         imgFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -436,6 +436,15 @@ public class Registro extends javax.swing.JFrame {
         pnlRegistro.add(imgAlerta);
         imgAlerta.setBounds(420, 120, 50, 40);
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        pnlRegistro.add(jButton1);
+        jButton1.setBounds(280, 360, 75, 23);
+
         pnlFundo.add(pnlRegistro);
         pnlRegistro.setBounds(100, 80, 1010, 630);
 
@@ -489,15 +498,15 @@ public class Registro extends javax.swing.JFrame {
         ReceberId receberId = new ReceberId();
         String senha = null;
         if (txtSenha.isVisible()){
-            senha = txtSenha.getText();
+            senha = Base64.getEncoder().encodeToString(txtSenha.getText().getBytes());
         }else{
-            senha = pwdSenha.getText();
+            senha = Base64.getEncoder().encodeToString(pwdSenha.getText().getBytes());
         }
         int id = receberId.idUsuario();
         int idUsuario = id;
-        String usuario = txtUsuario.getText();
+        String usuario = Base64.getEncoder().encodeToString(txtUsuario.getText().getBytes());
         int nivel = 1;
-        String classe = lblClasse.getText();
+        String classe = Base64.getEncoder().encodeToString(lblClasse.getText().getBytes());
         int vida = Integer.parseInt(lblValorVida.getText());      
         int gasto = Integer.parseInt(lblValorGasto.getText());
         int defesa = Integer.parseInt(lblValorDefesa.getText());   
@@ -516,7 +525,7 @@ public class Registro extends javax.swing.JFrame {
         Ataque atq2 = objetos.ataque2(dano2, gasto2);
         Ataque atqEspecial = objetos.ataqueEspecial(dano3, gasto3);
         Personagem personagem = objetos.personagem(vida, gasto, defesa, regeneracao, dinheiro, atq1, atq2, atqEspecial, idUsuario);
-        System.out.println(personagem.getDinheiro());
+        System.out.println(classe);
         Classe newClasse = objetos.classe(classe, personagem);
         Usuario user = objetos.usuario(id, usuario, senha, nivel, newClasse);
         
@@ -705,6 +714,10 @@ public class Registro extends javax.swing.JFrame {
         antiBug();
     }//GEN-LAST:event_rdoEngenheiroMouseExited
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println("CLASSE: " + lblClasse.getText() + " CLASSE CODIFICADA: " + Base64.getEncoder().encodeToString(lblClasse.getText().getBytes()));
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[], String usuarioLogin, String senhaLogin) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -722,6 +735,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel imgFundo;
     private javax.swing.JLabel imgOlho;
     private javax.swing.JLabel imgOlhoFechado;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JPanel jPanel1;
